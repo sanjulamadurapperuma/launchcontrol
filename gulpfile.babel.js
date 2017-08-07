@@ -39,7 +39,7 @@ gulp.task("js", (cb) => {
   });
 });
 
-gulp.task("server", ["hugo", "css", "js"], () => {
+gulp.task("server", ["setDevEnv", "hugo", "css", "js"], () => {
   browserSync.init({
     server: {
       baseDir: "./dist"
@@ -49,6 +49,10 @@ gulp.task("server", ["hugo", "css", "js"], () => {
   gulp.watch("./src/css/**/*.css", ["css"]);
   gulp.watch("./site/**/*", ["hugo"]);
 });
+
+gulp.task("setDevEnv", () => 
+  process.env.NODE_ENV = "development"
+);
 
 function buildSite(cb, options) {
   const args = options ? defaultArgs.concat(options) : defaultArgs;

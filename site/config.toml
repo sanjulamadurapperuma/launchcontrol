@@ -1,3 +1,4 @@
 baseurl = "/"
 languageCode = "en-gb"
 title = "Launchcontrol"
+baseURL = "https://atomtigerzoo.github.io/launchcontrol/"
