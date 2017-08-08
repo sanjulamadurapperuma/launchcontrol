@@ -8,7 +8,7 @@ Please see the website with all the checks here: https://atomtigerzoo.github.io/
 
 ## Contribute
 
-If you want to contribute, I will be happy to review your idead and PRs 🎈
+If you want to contribute, I will be happy to review your ideas and PRs 🎈
 
 ## License
 
