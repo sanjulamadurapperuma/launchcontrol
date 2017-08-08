@@ -8,31 +8,21 @@ please read the [code of conduct](CODE_OF_CONDUCT.md).
 > Install Hugo in your system: https://github.com/spf13/hugo/releases
 
 ```sh
-$ git clone https://github.com/netlify/victor-hugo
-$ cd victor-hugo
+$ git clone https://github.com/atomtigerzoo/launchcontrol
+$ cd launchcontrol
 $ npm install
+```
+
+## Developing
+
+```sh
+$ gulp server
 ```
 
 ## Building
 
 ```sh
-$ npm run build
-```
-
-## Testing
-
-```sh
-$ npm run test
-```
-
-```sh
-$ npm run test:watch
-```
-
-## Runing the server
-
-```sh
-$ npm run start
+$ gulp build
 ```
 
 ## Pull Requests
@@ -47,5 +37,5 @@ We actively welcome your pull requests.
 
 ## License
 
-By contributing to Victor-Hugo, you agree that your contributions will be licensed
+By contributing to Launchcontrol, you agree that your contributions will be licensed
 under its [MIT license](LICENSE).
