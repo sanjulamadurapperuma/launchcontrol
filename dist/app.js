@@ -73,12 +73,12 @@
 "use strict";
 
 
-// JS Goes here - ES6 supported
+// JS goes here - ES6 supported
 
-var services = document.querySelectorAll(".testService");
+var services = document.querySelectorAll(".testServices a");
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector(".userUrl").onblur = urlFieldUpdated;
+  document.querySelector(".userUrlInput").onblur = urlFieldUpdated;
 }, false);
 
 function urlFieldUpdated(event) {
@@ -93,7 +93,8 @@ function urlFieldUpdated(event) {
     for (var _iterator = services[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
       var service = _step.value;
 
-      service.href = "" + service.href + userUrl;
+      var serviceUrl = service.dataset.url;
+      service.href = serviceUrl.replace("%url", userUrl);
     }
   } catch (err) {
     _didIteratorError = true;
