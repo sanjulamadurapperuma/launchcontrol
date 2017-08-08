@@ -11,8 +11,32 @@ a:hover{
   color: tomato;
 }
 
-.userUrl{
+.userUrlInput{
   font-size: 15px;
   padding: 5px 10px;
   width: 35vw;
 }
+.userUrlButton{
+  background-color: tomato;
+  border: 1px solid #888;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 5px 10px;
+}
+.userUrlButton:active{
+  background-color: #888;
+  border: 1px solid tomato;
+}
+
+.testServices{
+  list-style-type: none;
+  margin: 0;
+  padding: 1em 0;
+}
+.testServices li{
+  margin-bottom: 0.3em;
+}
+.testServices li:before{
+  content: "»";
+};

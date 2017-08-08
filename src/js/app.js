@@ -1,9 +1,9 @@
-// JS Goes here - ES6 supported
+// JS goes here - ES6 supported
 
-const services = document.querySelectorAll(".testService");
+const services = document.querySelectorAll(".testServices a");
 
 document.addEventListener("DOMContentLoaded", function() {
-  document.querySelector(".userUrl").onblur = urlFieldUpdated;
+  document.querySelector(".userUrlInput").onblur = urlFieldUpdated;
 }, false);
 
 function urlFieldUpdated(event) {
@@ -11,6 +11,7 @@ function urlFieldUpdated(event) {
 
   // add url to services
   for (const service of services) {
-    service.href = `${service.href}${userUrl}`;
+    const serviceUrl = service.dataset.url;
+    service.href = serviceUrl.replace("%url", userUrl);
   }
 }
