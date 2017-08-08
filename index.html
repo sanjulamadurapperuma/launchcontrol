@@ -4,31 +4,47 @@
 	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <base href="https://atomtigerzoo.github.io/launchcontrol/">
-    <title>Home | Launchcontrol</title>
+    <title>Launchcontrol | Launchcontrol</title>
     <link rel="stylesheet" href="css/main.css"/>
   </head>
   <body>
 
 
+<h1>👩‍🚀 Launchcontrol</h1>
 
+<p>
+  Check your newly created website against some services for better performance, ranking and load times.<br>
+  Just enter your URL, click <em>'set URL'</em> and check the links afterwards.
+</p>
 
-<h1 id="launchcontrol">🚀 Launchcontrol</h1>
+<p>
+  <input type="text" name="url" class="userUrlInput" placeholder="Enter url to check">
+  <button type="button" class="userUrlButton">set URL</button>
+</p>
 
-<p>Check your newly created website against some services for better performance, ranking and load times.<br />
-Just enter your URL and check the links afterwards.</p>
-
-<p><input type="text" name="url" class="userUrl" placeholder="Enter url to check"></p>
-
-<p>» <a class="testService" target="_blank" href="https://validator.w3.org/nu/?doc=">Validate rendered HTML with W3 validator</a></p>
-
-<p>» <a class="testService" target="_blank" href="https://search.google.com/test/mobile-friendly?url=">Check for (mobile) issues with Google</a></p>
-
-<p>» <a class="testService" target="_blank" href="https://developers.google.com/speed/pagespeed/insights/?url=">Check performance with Google Page Speed</a></p>
-
-<p>» <a class="testService" target="_blank" href="https://www.google.com/search?q=site%3A">Check search results on Google</a></p>
-
-<p>» <a class="testService" target="_blank" href="https://www.bing.com/search?q=site%3A">Check search results on Bing</a></p>
-
+<ul class="testServices">
+  <li>
+    <a target="_blank" data-url="https://validator.w3.org/nu/?doc=%url" href="#">Validate rendered HTML with W3 validator</a>
+  </li>
+  <li>
+    <a target="_blank" data-url="https://search.google.com/test/mobile-friendly?url=%url" href="#">Check for (mobile) issues with Google</a>
+  </li>
+  <li>
+    <a target="_blank" data-url="https://developers.google.com/speed/pagespeed/insights/?url=%url" href="#">Measure performance with Google Page Speed</a>
+  </li>
+  <li>
+    <a target="_blank" data-url="https://www.google.com/search?q=site%3A%url" href="#">Search results on Google</a>
+  </li>
+  <li>
+    <a target="_blank" data-url="https://www.bing.com/search?q=site%3A%url" href="#">Search results on Bing</a>
+  </li>
+  <li>
+    <a target="_blank" data-url="%url/404040404" href="#">Does it have a 404 page?</a>
+  </li>
+  <li>
+    <a target="_blank" data-url="%url/robots.txt" href="#">Does it have a robots.txt?</a>
+  </li>
+</ul>
 
 <script src="app.js"></script>
 </body>

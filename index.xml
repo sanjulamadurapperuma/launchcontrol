@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Launchcontrol</title>
+    <title>Launchcontrol</title>
     <link>https://atomtigerzoo.github.io/launchcontrol/</link>
-    <description>Recent content in Home on Launchcontrol</description>
+    <description>Recent content on Launchcontrol</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 02 Aug 2017 12:18:17 +0200</lastBuildDate>
     
 	<atom:link href="https://atomtigerzoo.github.io/launchcontrol/index.xml" rel="self" type="application/rss+xml" />
     
