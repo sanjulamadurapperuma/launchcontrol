@@ -12,12 +12,15 @@ const browserSync = BrowserSync.create();
 const hugoBin = "hugo";
 const defaultArgs = ["-d", "../dist", "-s", "site", "-v"];
 
-gulp.task("hugo", (cb) => buildSite(cb));
-gulp.task("hugo-preview", (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture"]));
+// Development tasks
+gulp.task("hugo", ["setDevEnv"], (cb) => buildSite(cb));
+gulp.task("hugo-preview", ["setDevEnv"], (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture"]));
 
-gulp.task("build", ["css", "js", "hugo"]);
-gulp.task("build-preview", ["css", "js", "hugo-preview"]);
+// Build tasks
+gulp.task("build", ["setProdEnv", "css", "js"], (cb) => buildSite(cb));
+gulp.task("build-preview", ["setProdEnv", "css", "js"], (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture"]));
 
+// Compile CSS
 gulp.task("css", () => (
   gulp.src("./src/css/*.css")
     .pipe(postcss([cssImport({from: "./src/css/main.css"}), cssnext()]))
@@ -25,6 +28,7 @@ gulp.task("css", () => (
     .pipe(browserSync.stream())
 ));
 
+// Transpile javascript
 gulp.task("js", (cb) => {
   const myConfig = Object.assign({}, webpackConfig);
 
@@ -39,7 +43,8 @@ gulp.task("js", (cb) => {
   });
 });
 
-gulp.task("server", ["setDevEnv", "hugo", "css", "js"], () => {
+// Development serve/watch tasks
+gulp.task("server", ["hugo", "css", "js"], () => {
   browserSync.init({
     server: {
       baseDir: "./dist"
@@ -50,14 +55,19 @@ gulp.task("server", ["setDevEnv", "hugo", "css", "js"], () => {
   gulp.watch("./site/**/*", ["hugo"]);
 });
 
-gulp.task("setDevEnv", () => 
-  process.env.NODE_ENV = "development"
-);
+// Set environment var for development
+gulp.task("setDevEnv", () => {
+  process.env.NODE_ENV = "development";
+});
 
+// Set environment var for production
+gulp.task("setProdEnv", () => {
+  process.env.NODE_ENV = "production";
+});
+
+// Build all assets & page
 function buildSite(cb, options) {
   const args = options ? defaultArgs.concat(options) : defaultArgs;
-
-  process.env.NODE_ENV = false;
 
   return cp.spawn(hugoBin, args, {stdio: "inherit"}).on("close", (code) => {
     if (code === 0) {
