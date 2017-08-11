@@ -1,5 +1,6 @@
 import gulp from "gulp";
-import cp from "child_process";
+import {spawn} from "child_process";
+import hugoBin from "hugo-bin";
 import gutil from "gulp-util";
 import postcss from "gulp-postcss";
 import cssImport from "postcss-import";
@@ -9,18 +10,20 @@ import webpack from "webpack";
 import webpackConfig from "./webpack.conf";
 
 const browserSync = BrowserSync.create();
-const hugoBin = "hugo";
-const defaultArgs = ["-d", "../dist", "-s", "site", "-v"];
+
+// Hugo arguments
+const hugoArgsDefault = ["-d", "../dist", "-s", "site", "-v"];
+const hugoArgsPreview = ["--buildDrafts", "--buildFuture"];
 
 // Development tasks
-gulp.task("hugo", ["setDevEnv"], (cb) => buildSite(cb));
-gulp.task("hugo-preview", ["setDevEnv"], (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture"]));
+gulp.task("hugo", (cb) => buildSite(cb));
+gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
 
-// Build tasks
-gulp.task("build", ["setProdEnv", "css", "js"], (cb) => buildSite(cb));
-gulp.task("build-preview", ["setProdEnv", "css", "js"], (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture"]));
+// Build/production tasks
+gulp.task("build", ["css", "js"], (cb) => buildSite(cb, [], "production"));
+gulp.task("build-preview", ["css", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
 
-// Compile CSS
+// Compile CSS with PostCSS
 gulp.task("css", () => (
   gulp.src("./src/css/*.css")
     .pipe(postcss([cssImport({from: "./src/css/main.css"}), cssnext()]))
@@ -28,7 +31,7 @@ gulp.task("css", () => (
     .pipe(browserSync.stream())
 ));
 
-// Transpile javascript
+// Compile Javascript
 gulp.task("js", (cb) => {
   const myConfig = Object.assign({}, webpackConfig);
 
@@ -43,7 +46,7 @@ gulp.task("js", (cb) => {
   });
 });
 
-// Development serve/watch tasks
+// Development server with browsersync
 gulp.task("server", ["hugo", "css", "js"], () => {
   browserSync.init({
     server: {
@@ -55,21 +58,15 @@ gulp.task("server", ["hugo", "css", "js"], () => {
   gulp.watch("./site/**/*", ["hugo"]);
 });
 
-// Set environment var for development
-gulp.task("setDevEnv", () => {
-  process.env.NODE_ENV = "development";
-});
+/**
+ * Run hugo and build the site
+ */
+function buildSite(cb, options, environment = "development") {
+  const args = options ? hugoArgsDefault.concat(options) : hugoArgsDefault;
 
-// Set environment var for production
-gulp.task("setProdEnv", () => {
-  process.env.NODE_ENV = "production";
-});
+  process.env.NODE_ENV = environment;
 
-// Build all assets & page
-function buildSite(cb, options) {
-  const args = options ? defaultArgs.concat(options) : defaultArgs;
-
-  return cp.spawn(hugoBin, args, {stdio: "inherit"}).on("close", (code) => {
+  return spawn(hugoBin, args, {stdio: "inherit"}).on("close", (code) => {
     if (code === 0) {
       browserSync.reload();
       cb();
