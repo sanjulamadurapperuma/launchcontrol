@@ -1,24 +1,28 @@
-body {
-  font-size: 16px;
+/*
+  You can use import statements to include partials:
+ */
+/*
+  Define your resets here or use something like Normalize.css if you like
+ */
+html,
+body{
+  margin: 0;
+  padding: 0;
 }
-
 body{
   background-color: #f2f4ee;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   padding: 20px 10vw;
 }
-
 a,
 a:hover{
   color: tomato;
 }
-
 .userUrlInput{
   font-size: 15px;
   padding: 5px 10px;
   width: 35vw;
 }
-
 .userUrlButton{
   background-color: tomato;
   border: 1px solid #888;
@@ -27,22 +31,18 @@ a:hover{
   font-size: 15px;
   padding: 5px 10px;
 }
-
 .userUrlButton:active{
   background-color: #888;
   border: 1px solid tomato;
 }
-
 .testServices{
   list-style-type: none;
   margin: 0;
   padding: 1em 0;
 }
-
 .testServices li{
   margin-bottom: 0.3em;
 }
-
 .testServices li:before{
   content: "»";
 };
