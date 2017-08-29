@@ -74,7 +74,6 @@
 
 
 // JS goes here - ES6 supported
-
 var services = document.querySelectorAll(".testServices a");
 
 document.addEventListener("DOMContentLoaded", function () {

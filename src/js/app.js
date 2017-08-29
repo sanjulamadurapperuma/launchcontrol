@@ -1,5 +1,4 @@
 // JS goes here - ES6 supported
-
 const services = document.querySelectorAll(".testServices a");
 
 document.addEventListener("DOMContentLoaded", function() {
