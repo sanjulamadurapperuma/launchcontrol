@@ -2,6 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ if eq (getenv "NODE_ENV") "development" }}<base href="/">
     {{ else }}<base href="{{ .Site.BaseURL }}">{{ end }}
     <title>{{ .Page.Title }} | {{ .Site.Title }}</title>
