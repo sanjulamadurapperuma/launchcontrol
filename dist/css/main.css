@@ -11,12 +11,19 @@ body{
 }
 body{
   background-color: #f2f4ee;
+  color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   padding: 20px 10vw;
 }
 a,
 a:hover{
   color: tomato;
+}
+h2{
+  text-decoration: underline;
+  -webkit-text-decoration-color: #bbb;
+          text-decoration-color: #bbb;
+  margin-bottom: 0.3em;
 }
 .userUrlInput{
   font-size: 15px;
@@ -38,11 +45,19 @@ a:hover{
 .testServices{
   list-style-type: none;
   margin: 0;
-  padding: 1em 0;
+  padding: 0 0 1em;
 }
 .testServices li{
   margin-bottom: 0.3em;
 }
 .testServices li:before{
   content: "»";
-};
+}
+.checklist{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.checklist li{
+  margin-bottom: 0.3em;
+}
